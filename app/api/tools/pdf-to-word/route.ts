@@ -1,62 +1,57 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 
-// Setup polyfills before importing pdf-parse
-declare global {
-  var DOMMatrix: any;
-  var Path2D: any;
-  var ImageData: any;
-}
+export async function POST(req: NextRequest) {
+  try {
+    // Setup polyfills before importing pdf-parse
+    if (typeof globalThis !== 'undefined' && typeof process !== 'undefined') {
+      if (!globalThis.DOMMatrix) {
+        globalThis.DOMMatrix = class DOMMatrix {
+          a = 1;
+          b = 0;
+          c = 0;
+          d = 1;
+          e = 0;
+          f = 0;
 
-if (!globalThis.DOMMatrix) {
-  globalThis.DOMMatrix = class DOMMatrix {
-    a = 1;
-    b = 0;
-    c = 0;
-    d = 1;
-    e = 0;
-    f = 0;
+          constructor(init?: string | number[]) {
+            if (!init) return;
+            if (typeof init === 'string') return;
+            if (Array.isArray(init) && init.length === 6) {
+              [this.a, this.b, this.c, this.d, this.e, this.f] = init;
+            }
+          }
 
-    constructor(init?: string | number[]) {
-      if (!init) return;
-      if (typeof init === 'string') return;
-      if (Array.isArray(init) && init.length === 6) {
-        [this.a, this.b, this.c, this.d, this.e, this.f] = init;
+          multiply(other: any) {
+            return new (globalThis.DOMMatrix as any)([
+              this.a * other.a + this.c * other.b,
+              this.b * other.a + this.d * other.b,
+              this.a * other.c + this.c * other.d,
+              this.b * other.c + this.d * other.d,
+              this.a * other.e + this.c * other.f + this.e,
+              this.b * other.e + this.d * other.f + this.f,
+            ]);
+          }
+        } as any;
+      }
+
+      if (!globalThis.Path2D) {
+        globalThis.Path2D = class Path2D {
+          constructor(path?: any) {}
+        } as any;
+      }
+
+      if (!globalThis.ImageData) {
+        globalThis.ImageData = class ImageData {
+          constructor(data: any, width: number, height?: number) {}
+        } as any;
       }
     }
 
-    multiply(other: any) {
-      return new (globalThis.DOMMatrix as any)([
-        this.a * other.a + this.c * other.b,
-        this.b * other.a + this.d * other.b,
-        this.a * other.c + this.c * other.d,
-        this.b * other.c + this.d * other.d,
-        this.a * other.e + this.c * other.f + this.e,
-        this.b * other.e + this.d * other.f + this.f,
-      ]);
-    }
-  };
-}
+    // Import pdf-parse after polyfills are set up
+    const pdfParseModule = await import('pdf-parse');
+    const pdfParse = (pdfParseModule as any).default || (pdfParseModule as any);
 
-if (!globalThis.Path2D) {
-  globalThis.Path2D = class Path2D {
-    constructor(path?: any) {}
-  };
-}
-
-if (!globalThis.ImageData) {
-  globalThis.ImageData = class ImageData {
-    constructor(data: any, width: number, height?: number) {}
-  };
-}
-
-// Now import pdf-parse after polyfills are set up
-import * as pdfParseModule from 'pdf-parse';
-
-const pdfParse = (pdfParseModule as any).default || (pdfParseModule as any);
-
-export async function POST(req: NextRequest) {
-  try {
     const formData = await req.formData();
     const file = formData.get('pdf') as File;
 
