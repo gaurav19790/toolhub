@@ -35,7 +35,8 @@ export default function Home() {
       description: "Convert PDF files to editable Word documents in seconds.",
       icon: "📄",
       category: "Conversion",
-      link: "/tools/pdf-to-word",
+      link: "#",
+      coming: true,
     },
     {
       id: "privacy-policy-generator",
