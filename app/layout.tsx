@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import Script from "next/dist/client/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,6 +50,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1350477690991328"
+          crossOrigin="anonymous"
+        ></Script>
         {children}
         <Analytics />
       </body>
