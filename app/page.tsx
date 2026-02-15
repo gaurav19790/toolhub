@@ -16,6 +16,7 @@ export default function Home() {
       icon: "🖼️",
       category: "Media",
       link: "/tools/image-compressor",
+      coming: false,
     },
     {
       id: "url-shortener",
@@ -53,6 +54,7 @@ export default function Home() {
       icon: "⚖️",
       category: "Legal",
       link: "/tools/privacy-policy-generator",
+      coming: false,
     },
     {
       id: "text-to-speech",
@@ -70,8 +72,8 @@ export default function Home() {
       description: "Format, validate, and minify JSON code instantly.",
       icon: "{ }",
       category: "Developer",
-      link: "#",
-      coming: true,
+      link: "/tools/json-formatter",
+      coming: false,
     },
     {
       id: "password-generator",
@@ -102,7 +104,8 @@ export default function Home() {
     },
   ];
 
-  const categories = [...new Set(tools.map((t) => t.category))];
+  // const categories = [...new Set(tools.map((t) => t.category))];
+  const sortedTools = [...tools].sort((a, b) => a.coming - b.coming);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-black text-white">
@@ -161,7 +164,7 @@ export default function Home() {
 
           {/* Tools Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {tools.map((tool) => (
+            {sortedTools.map((tool) => (
               <a
                 key={tool.id}
                 href={tool.link}
