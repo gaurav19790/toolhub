@@ -1,3 +1,11 @@
+import { Footer } from "@/components/Footer";
+import { Navbar } from "@/components/Navbar";
+export const metadata = {
+  title: "ToolHub — Free Online Tools",
+  description:
+    "ToolHub provides 20+ free online utilities including image compression, PDF to Word conversion, and privacy policy generation. Fast, private, and easy-to-use tools with no registration required.",
+};
+
 export default function Home() {
   const tools = [
     {
@@ -99,28 +107,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-black text-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-slate-950/50 backdrop-blur-md border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
-            ToolHub
-          </div>
-          <div className="flex gap-4">
-            <a
-              href="#tools"
-              className="text-slate-300 hover:text-white transition"
-            >
-              Tools
-            </a>
-            <a
-              href="#about"
-              className="text-slate-300 hover:text-white transition"
-            >
-              About
-            </a>
-          </div>
-        </div>
-      </nav>
-
+      <Navbar />
       {/* Hero Section */}
       <div className="pt-32 pb-16 px-6">
         <div className="max-w-6xl mx-auto text-center space-y-8">
@@ -301,70 +288,7 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800 py-12 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <div className="text-2xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent mb-3">
-                ToolHub
-              </div>
-              <p className="text-slate-400 text-sm">
-                Your collection of free, powerful online tools for everyday
-                tasks.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-3">Quick Links</h4>
-              <ul className="text-slate-400 text-sm space-y-2">
-                <li>
-                  <a href="#tools" className="hover:text-white transition">
-                    Tools
-                  </a>
-                </li>
-                <li>
-                  <a href="#about" className="hover:text-white transition">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/tools/privacy-policy-generator"
-                    className="hover:text-white transition"
-                  >
-                    Privacy
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-3">Popular Tools</h4>
-              <ul className="text-slate-400 text-sm space-y-2">
-                <li>
-                  <a
-                    href="/tools/image-compressor"
-                    className="hover:text-white transition"
-                  >
-                    Image Compressor
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/tools/pdf-to-word"
-                    className="hover:text-white transition"
-                  >
-                    PDF to Word
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
-            <p>
-              &copy; 2025 ToolHub. All rights reserved. Free tools for everyone.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
