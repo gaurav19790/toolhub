@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "ToolHub - 20+ Free Online Tools for Everyone",
+   verification: {
+    google: "Peb-oRD12uQb1M2D1vZ4iq8dw7UhWJy2xrK8nsAAq3s",
+  },
   description:
     "Discover 20+ free online tools including Image Compressor, PDF to Word, URL Shortener, QR Code Generator, and more. Fast, private, and completely free. No registration needed.",
   keywords:
