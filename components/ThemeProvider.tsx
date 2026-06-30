@@ -10,6 +10,17 @@ export default function ThemeProvider({
   const [isDark, setIsDark] = useState(false);
   const [mounted, setMounted] = useState(false);
 
+  const updateTheme = (dark: boolean) => {
+    const html = document.documentElement;
+    if (dark) {
+      html.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      html.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
+
   useEffect(() => {
     setMounted(true);
     // Check for saved theme preference or system preference
@@ -21,17 +32,6 @@ export default function ThemeProvider({
     setIsDark(shouldBeDark);
     updateTheme(shouldBeDark);
   }, []);
-
-  const updateTheme = (dark: boolean) => {
-    const html = document.documentElement;
-    if (dark) {
-      html.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      html.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
 
   const toggleTheme = () => {
     const newTheme = !isDark;

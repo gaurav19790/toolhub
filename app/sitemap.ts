@@ -1,23 +1,20 @@
+import { tools } from "@/lib/tools";
+
 export default function sitemap() {
   const baseUrl = "https://yourdomain.com";
-  
-  const tools = [
+
+  const pages = [
     { path: "/", priority: 1 },
-    { path: "/tools/image-compressor", priority: 0.9 },
-    { path: "/tools/pdf-to-word", priority: 0.9 },
-    { path: "/tools/privacy-policy-generator", priority: 0.8 },
-    { path: "/tools/url-shortener", priority: 0.8 },
-    { path: "/tools/qr-code-generator", priority: 0.8 },
-    { path: "/tools/text-to-speech", priority: 0.7 },
-    { path: "/tools/json-formatter", priority: 0.7 },
-    { path: "/tools/password-generator", priority: 0.7 },
-    { path: "/tools/color-picker", priority: 0.7 },
-    { path: "/tools/unit-converter", priority: 0.7 },
+    { path: "/blog", priority: 0.9 },
+    ...tools.map((tool) => ({
+      path: `/tools/${tool.slug}`,
+      priority: tool.custom ? 0.9 : 0.75,
+    })),
   ];
 
-  return tools.map((tool) => ({
-    url: `${baseUrl}${tool.path}`,
+  return pages.map((page) => ({
+    url: `${baseUrl}${page.path}`,
     lastModified: new Date(),
-    priority: tool.priority,
+    priority: page.priority,
   }));
 }

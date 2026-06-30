@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, PresentationControls, Float } from "@react-three/drei";
+import { PresentationControls, Float } from "@react-three/drei";
 import * as THREE from "three";
 
 function RotatingBox() {

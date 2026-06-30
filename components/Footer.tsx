@@ -1,67 +1,79 @@
-import React from "react";
+import Link from "next/link";
 
 export const Footer = () => {
   return (
-    <footer className="border-t border-slate-800 py-12 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+    <footer className="border-t border-slate-800 px-6 py-12">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-8 grid gap-8 md:grid-cols-3">
           <div>
-            <div className="text-2xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent mb-3">
+            <div className="mb-3 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-2xl font-bold text-transparent">
               ToolHub
             </div>
-            <p className="text-slate-400 text-sm">
-              Your collection of free, powerful online tools for everyday tasks.
+            <p className="text-sm leading-6 text-slate-400">
+              A growing library of free online tools for content, SEO, design,
+              development, finance, and everyday productivity.
             </p>
           </div>
           <div>
-            <h4 className="font-bold mb-3">Quick Links</h4>
-            <ul className="text-slate-400 text-sm space-y-2">
+            <h4 className="mb-3 font-bold">Quick Links</h4>
+            <ul className="space-y-2 text-sm text-slate-400">
               <li>
-                <a href="#tools" className="hover:text-white transition">
+                <Link href="/#tools" className="transition hover:text-white">
                   Tools
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#about" className="hover:text-white transition">
-                  About
-                </a>
+                <Link href="/#categories" className="transition hover:text-white">
+                  Categories
+                </Link>
               </li>
               <li>
-                <a
+                <Link href="/blog" className="transition hover:text-white">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/tools/privacy-policy-generator"
-                  className="hover:text-white transition"
+                  className="transition hover:text-white"
                 >
-                  Privacy
-                </a>
+                  Privacy Policy Generator
+                </Link>
               </li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold mb-3">Popular Tools</h4>
-            <ul className="text-slate-400 text-sm space-y-2">
+            <h4 className="mb-3 font-bold">Popular Tools</h4>
+            <ul className="space-y-2 text-sm text-slate-400">
               <li>
-                <a
+                <Link
                   href="/tools/image-compressor"
-                  className="hover:text-white transition"
+                  className="transition hover:text-white"
                 >
                   Image Compressor
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/tools/pdf-to-word"
-                  className="hover:text-white transition"
+                <Link
+                  href="/tools/json-formatter"
+                  className="transition hover:text-white"
                 >
-                  PDF to Word
-                </a>
+                  JSON Formatter
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/tools/password-generator"
+                  className="transition hover:text-white"
+                >
+                  Password Generator
+                </Link>
               </li>
             </ul>
           </div>
         </div>
-        <div className="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
-          <p>
-            &copy; 2025 ToolHub. All rights reserved. Free tools for everyone.
-          </p>
+        <div className="border-t border-slate-800 pt-8 text-center text-sm text-slate-500">
+          <p>&copy; 2026 ToolHub. Free tools for everyone.</p>
         </div>
       </div>
     </footer>

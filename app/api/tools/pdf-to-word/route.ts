@@ -37,13 +37,13 @@ export async function POST(req: NextRequest) {
 
       if (!globalThis.Path2D) {
         globalThis.Path2D = class Path2D {
-          constructor(path?: any) {}
+          constructor(_path?: any) {}
         } as any;
       }
 
       if (!globalThis.ImageData) {
         globalThis.ImageData = class ImageData {
-          constructor(data: any, width: number, height?: number) {}
+          constructor(_data: any, _width: number, _height?: number) {}
         } as any;
       }
     }

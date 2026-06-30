@@ -1,296 +1,145 @@
+import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
+import { getCategories, tools } from "@/lib/tools";
+
 export const metadata = {
-  title: "ToolHub — Free Online Tools",
+  title: "ToolHub - 40+ Free Online Tools",
   description:
-    "ToolHub provides 20+ free online utilities including image compression, PDF to Word conversion, and privacy policy generation. Fast, private, and easy-to-use tools with no registration required.",
+    "ToolHub provides 40+ free online utilities for images, PDFs, JSON, SEO, text, finance, design, and daily productivity tasks.",
 };
 
 export default function Home() {
-  const tools = [
-    {
-      id: "image-compressor",
-      name: "Image Compressor",
-      description:
-        "Compress images without losing quality. Reduce file size up to 80%.",
-      icon: "🖼️",
-      category: "Media",
-      link: "/tools/image-compressor",
-      coming: false,
-    },
-    {
-      id: "url-shortener",
-      name: "URL Shortener",
-      description:
-        "Create short, memorable links. Track clicks and manage URLs easily.",
-      icon: "🔗",
-      category: "Web",
-      link: "/tools/url-shortener",
-      coming: true,
-    },
-    {
-      id: "qr-code-generator",
-      name: "QR Code Generator",
-      description:
-        "Generate QR codes instantly. Download in PNG or SVG format.",
-      icon: "📱",
-      category: "Media",
-      link: "/tools/qr-code-generator",
-      coming: true,
-    },
-    {
-      id: "pdf-to-word",
-      name: "PDF to Word",
-      description: "Convert PDF files to editable Word documents in seconds.",
-      icon: "📄",
-      category: "Conversion",
-      link: "#",
-      coming: true,
-    },
-    {
-      id: "privacy-policy-generator",
-      name: "Privacy Policy Generator",
-      description: "Generate professional privacy policies for your website.",
-      icon: "⚖️",
-      category: "Legal",
-      link: "/tools/privacy-policy-generator",
-      coming: false,
-    },
-    {
-      id: "text-to-speech",
-      name: "Text to Speech",
-      description:
-        "Convert text to natural-sounding audio in multiple languages.",
-      icon: "🔊",
-      category: "Audio",
-      link: "#",
-      coming: true,
-    },
-    {
-      id: "json-formatter",
-      name: "JSON Formatter",
-      description: "Format, validate, and minify JSON code instantly.",
-      icon: "{ }",
-      category: "Developer",
-      link: "/tools/json-formatter",
-      coming: false,
-    },
-    {
-      id: "password-generator",
-      name: "Password Generator",
-      description: "Generate strong, secure passwords with custom settings.",
-      icon: "🔐",
-      category: "Security",
-      link: "#",
-      coming: true,
-    },
-    {
-      id: "color-picker",
-      name: "Color Picker",
-      description: "Pick colors from anywhere. Get HEX, RGB, HSL codes.",
-      icon: "🎨",
-      category: "Design",
-      link: "#",
-      coming: true,
-    },
-    {
-      id: "unit-converter",
-      name: "Unit Converter",
-      description: "Convert between different units of measurement instantly.",
-      icon: "📐",
-      category: "Utility",
-      link: "#",
-      coming: true,
-    },
-  ];
-
-  // const categories = [...new Set(tools.map((t) => t.category))];
-  const sortedTools = [...tools].sort((a, b) => a.coming - b.coming);
+  const categories = getCategories();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-black text-white">
-      {/* Navigation */}
+    <div className="min-h-screen overflow-hidden bg-slate-950 text-white">
       <Navbar />
-      {/* Hero Section */}
-      <div className="pt-32 pb-16 px-6">
-        <div className="max-w-6xl mx-auto text-center space-y-8">
-          <div className="space-y-4">
-            <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent leading-tight">
-              Free Online Tools
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto">
-              Discover 20+ powerful, free tools to simplify your daily tasks. No
-              registration, no ads, completely private.
+      <main className="relative">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_8%,rgba(236,72,153,0.24),transparent_28%),radial-gradient(circle_at_80%_16%,rgba(99,102,241,0.24),transparent_28%),linear-gradient(180deg,#020617,#0f172a_42%,#020617)]" />
+
+        <section className="mx-auto grid max-w-7xl gap-10 px-6 pb-14 pt-32 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="flex flex-col justify-center">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-pink-300">
+              Free online utility hub
             </p>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-2xl mx-auto">
-            <div className="p-4 md:p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-              <div className="text-2xl md:text-3xl font-bold text-pink-400">
-                20+
-              </div>
-              <p className="text-slate-400 text-sm md:text-base">Tools</p>
-            </div>
-            <div className="p-4 md:p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-              <div className="text-2xl md:text-3xl font-bold text-purple-400">
-                100%
-              </div>
-              <p className="text-slate-400 text-sm md:text-base">Free</p>
-            </div>
-            <div className="p-4 md:p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-              <div className="text-2xl md:text-3xl font-bold text-indigo-400">
-                ∞
-              </div>
-              <p className="text-slate-400 text-sm md:text-base">Private</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Tools Section */}
-      <div
-        id="tools"
-        className="py-20 px-6 bg-slate-900/50 border-t border-slate-800"
-      >
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
-            Explore Our Tools
-          </h2>
-          <p className="text-center text-slate-400 mb-12 max-w-2xl mx-auto">
-            Browse through our collection of tools organized by category. More
-            tools coming soon!
-          </p>
-
-          {/* Tools Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {sortedTools.map((tool) => (
+            <h1 className="max-w-4xl text-5xl font-black leading-tight tracking-normal md:text-7xl">
+              40+ tools with fast, polished, 3D-style pages.
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+              Compress images, convert PDFs, format JSON, generate SEO assets,
+              calculate finance values, clean text, and handle everyday web
+              tasks from one AdSense-ready tool website foundation.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
               <a
-                key={tool.id}
-                href={tool.link}
-                className={`group p-6 rounded-lg border transition-all duration-300 ${
-                  tool.coming
-                    ? "bg-slate-800/30 border-slate-700 cursor-not-allowed"
-                    : "bg-gradient-to-br from-slate-800/50 to-slate-800/20 border-slate-700 hover:border-pink-500/50 hover:shadow-lg hover:shadow-pink-500/10 hover:-translate-y-1"
-                }`}
+                href="#tools"
+                className="rounded-xl bg-gradient-to-r from-pink-500 to-indigo-500 px-6 py-3 font-bold text-white shadow-xl shadow-pink-950/40"
               >
-                <div className="flex justify-between items-start mb-3">
-                  <div className="text-3xl">{tool.icon}</div>
-                  {tool.coming && (
-                    <span className="px-2 py-1 bg-yellow-500/20 border border-yellow-500/50 rounded text-xs text-yellow-300 font-semibold">
-                      Coming
-                    </span>
-                  )}
-                </div>
-                <h3 className="text-lg font-bold mb-2 group-hover:text-pink-400 transition">
-                  {tool.name}
-                </h3>
-                <p className="text-slate-400 text-sm mb-3">
-                  {tool.description}
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs bg-slate-700/50 px-2 py-1 rounded">
-                    {tool.category}
+                Explore Tools
+              </a>
+              <a
+                href="#categories"
+                className="rounded-xl border border-white/10 bg-white/10 px-6 py-3 font-bold text-slate-100 backdrop-blur"
+              >
+                View Categories
+              </a>
+            </div>
+          </div>
+
+          <div className="[perspective:1200px]">
+            <div className="grid gap-4 rounded-[2rem] border border-white/10 bg-white/[0.06] p-5 shadow-2xl shadow-black/40 backdrop-blur-xl [transform:rotateX(6deg)_rotateY(-8deg)]">
+              {tools.slice(0, 9).map((tool, index) => (
+                <Link
+                  key={tool.slug}
+                  href={`/tools/${tool.slug}`}
+                  className="group grid grid-cols-[64px_1fr_auto] items-center gap-4 rounded-2xl border border-white/10 bg-slate-950/60 p-4 transition hover:-translate-y-1 hover:border-pink-400/60 hover:bg-slate-900"
+                  style={{ transform: `translateZ(${index * 2}px)` }}
+                >
+                  <span className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${tool.accent} text-sm font-black shadow-lg shadow-black/30`}>
+                    {tool.icon}
                   </span>
-                  {!tool.coming && (
-                    <span className="text-pink-400 group-hover:translate-x-1 transition">
-                      →
+                  <span>
+                    <span className="block font-bold">{tool.name}</span>
+                    <span className="block text-sm text-slate-400">
+                      {tool.shortDescription}
                     </span>
-                  )}
-                </div>
+                  </span>
+                  <span className="text-sm font-bold text-pink-300">Open</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="categories" className="mx-auto max-w-7xl px-6 pb-8">
+          <div className="flex flex-wrap gap-3">
+            {categories.map((category) => (
+              <a
+                key={category}
+                href={`#${category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+                className="rounded-full border border-white/10 bg-white/[0.07] px-4 py-2 text-sm text-slate-200 shadow-lg shadow-black/10 backdrop-blur transition hover:border-cyan-300/60"
+              >
+                {category}
               </a>
             ))}
           </div>
-        </div>
-      </div>
+        </section>
 
-      {/* Why Choose Us Section */}
-      <div className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
-            Why Choose ToolHub?
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-8 rounded-xl bg-gradient-to-br from-slate-800/50 to-slate-800/20 border border-slate-700 hover:border-pink-500/50 transition-all">
-              <div className="text-4xl mb-4">⚡</div>
-              <h3 className="text-xl font-bold mb-3">Lightning Fast</h3>
-              <p className="text-slate-400">
-                All tools run locally in your browser for instant results
-                without server delays.
+        <section id="tools" className="mx-auto max-w-7xl px-6 py-14">
+          <div className="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">
+                Tool Library
               </p>
+              <h2 className="mt-3 text-4xl font-black tracking-normal md:text-5xl">
+                All tools
+              </h2>
             </div>
-
-            <div className="p-8 rounded-xl bg-gradient-to-br from-slate-800/50 to-slate-800/20 border border-slate-700 hover:border-purple-500/50 transition-all">
-              <div className="text-4xl mb-4">🔒</div>
-              <h3 className="text-xl font-bold mb-3">100% Private</h3>
-              <p className="text-slate-400">
-                Your data never leaves your device. We don't store or share any
-                information.
-              </p>
-            </div>
-
-            <div className="p-8 rounded-xl bg-gradient-to-br from-slate-800/50 to-slate-800/20 border border-slate-700 hover:border-indigo-500/50 transition-all">
-              <div className="text-4xl mb-4">💯</div>
-              <h3 className="text-xl font-bold mb-3">Completely Free</h3>
-              <p className="text-slate-400">
-                No ads, no registration, no hidden fees. All tools are 100% free
-                forever.
-              </p>
-            </div>
-
-            <div className="p-8 rounded-xl bg-gradient-to-br from-slate-800/50 to-slate-800/20 border border-slate-700 hover:border-pink-500/50 transition-all">
-              <div className="text-4xl mb-4">📱</div>
-              <h3 className="text-xl font-bold mb-3">Works Everywhere</h3>
-              <p className="text-slate-400">
-                Desktop, tablet, or mobile. Access all tools from any device
-                with a browser.
-              </p>
-            </div>
-
-            <div className="p-8 rounded-xl bg-gradient-to-br from-slate-800/50 to-slate-800/20 border border-slate-700 hover:border-purple-500/50 transition-all">
-              <div className="text-4xl mb-4">🚀</div>
-              <h3 className="text-xl font-bold mb-3">Always Updated</h3>
-              <p className="text-slate-400">
-                New tools added regularly. Stay tuned for more powerful
-                utilities.
-              </p>
-            </div>
-
-            <div className="p-8 rounded-xl bg-gradient-to-br from-slate-800/50 to-slate-800/20 border border-slate-700 hover:border-indigo-500/50 transition-all">
-              <div className="text-4xl mb-4">👥</div>
-              <h3 className="text-xl font-bold mb-3">Community Loved</h3>
-              <p className="text-slate-400">
-                Join thousands of users who trust ToolHub for their daily tasks.
-              </p>
-            </div>
+            <p className="max-w-xl text-sm leading-6 text-slate-400">
+              Each tool has its own page, usage instructions, feature content,
+              and a dimensional card layout suitable for a modern utility site.
+            </p>
           </div>
-        </div>
-      </div>
 
-      {/* CTA Section */}
-      <div
-        id="about"
-        className="py-20 px-6 bg-slate-900/50 border-t border-slate-800"
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
-            Get Started Today
-          </h2>
-          <p className="text-slate-400 text-lg mb-8 max-w-2xl mx-auto">
-            Start using our tools right now. No download, no installation, no
-            account needed. Just click and go!
-          </p>
-          <a
-            href="#tools"
-            className="inline-block px-10 py-4 rounded-lg bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-300 font-bold text-lg shadow-lg hover:shadow-pink-500/50 hover:shadow-2xl transform hover:-translate-y-1"
-          >
-            Explore Tools →
-          </a>
-        </div>
-      </div>
-
-      {/* Footer */}
+          <div className="space-y-14">
+            {categories.map((category) => (
+              <div key={category} id={category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}>
+                <h3 className="mb-5 text-2xl font-black">{category}</h3>
+                <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  {tools
+                    .filter((tool) => tool.category === category)
+                    .map((tool) => (
+                      <Link
+                        key={tool.slug}
+                        href={`/tools/${tool.slug}`}
+                        className="group [perspective:900px]"
+                      >
+                        <div className="h-full rounded-2xl border border-white/10 bg-white/[0.055] p-5 shadow-xl shadow-black/20 backdrop-blur transition duration-300 group-hover:-translate-y-2 group-hover:border-pink-400/50 group-hover:bg-white/[0.08] group-hover:[transform:rotateX(4deg)_rotateY(-4deg)]">
+                          <div className="mb-5 flex items-start justify-between gap-3">
+                            <span className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${tool.accent} text-sm font-black text-white shadow-lg shadow-black/30`}>
+                              {tool.icon}
+                            </span>
+                            <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-300">
+                              {tool.custom ? "Advanced" : "Tool"}
+                            </span>
+                          </div>
+                          <h4 className="text-lg font-bold">{tool.name}</h4>
+                          <p className="mt-3 min-h-16 text-sm leading-6 text-slate-400">
+                            {tool.shortDescription}
+                          </p>
+                          <div className="mt-5 text-sm font-bold text-pink-300">
+                            Open tool
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
       <Footer />
     </div>
   );

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 
 export const Navbar = () => {
   return (
@@ -15,12 +14,14 @@ export const Navbar = () => {
           >
             Tools
           </Link>
+          <Link href="/blog" className="text-slate-300 hover:text-white transition">
+            Blog
+          </Link>
           <Link
-            href={{
-              pathname: "/about",
-            }}
+            href="/#categories"
+            className="text-slate-300 hover:text-white transition"
           >
-            About
+            Categories
           </Link>
         </div>
       </div>
