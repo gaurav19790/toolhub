@@ -5,6 +5,7 @@ import QRCode from "qrcode";
 import { useState } from "react";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
+import { tools as allTools } from "@/lib/tools";
 import type { Tool } from "@/lib/tools";
 
 type Props = {
@@ -930,6 +931,23 @@ export default function GenericToolClient({ tool }: Props) {
   const [result, setResult] = useState<ToolResult | null>(null);
   const [copied, setCopied] = useState(false);
   const previewColor = tool.kind === "color" ? parseColor(input) : null;
+  const relatedTools = allTools
+    .filter((candidate) => candidate.slug !== tool.slug && candidate.category === tool.category)
+    .slice(0, 4);
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: tool.name,
+    description: tool.description,
+    applicationCategory:
+      tool.category === "Developer" ? "DeveloperApplication" : "UtilitiesApplication",
+    operatingSystem: "Any",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+  };
 
   const handleRun = async () => {
     const nextResult = buildResult(tool, input, secondary);
@@ -965,6 +983,10 @@ export default function GenericToolClient({ tool }: Props) {
 
   return (
     <div className="min-h-screen overflow-hidden bg-slate-950 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <Navbar />
       <main className="relative pt-28">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_10%,rgba(236,72,153,0.22),transparent_28%),radial-gradient(circle_at_82%_16%,rgba(14,165,233,0.22),transparent_26%),linear-gradient(180deg,#020617,#0f172a_45%,#020617)]" />
@@ -1097,13 +1119,36 @@ export default function GenericToolClient({ tool }: Props) {
         </section>
 
         <section className="mx-auto max-w-7xl px-6 pb-20">
+          {relatedTools.length > 0 && (
+            <div className="mb-10">
+              <h2 className="mb-4 text-2xl font-black">Related tools</h2>
+              <div className="grid gap-4 md:grid-cols-4">
+                {relatedTools.map((related) => (
+                  <Link
+                    key={related.slug}
+                    href={`/tools/${related.slug}`}
+                    className="rounded-2xl border border-white/10 bg-white/[0.055] p-4 transition hover:-translate-y-1 hover:border-cyan-300/60"
+                  >
+                    <span className="text-sm font-black text-cyan-300">
+                      {related.icon}
+                    </span>
+                    <h3 className="mt-2 font-bold">{related.name}</h3>
+                    <p className="mt-2 text-xs leading-5 text-slate-400">
+                      {related.shortDescription}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
           <div className="grid gap-6 md:grid-cols-3">
             {tool.features.map((feature) => (
               <div key={feature} className="rounded-2xl border border-white/10 bg-white/[0.05] p-6 shadow-xl shadow-black/20">
                 <div className={`mb-4 h-2 w-16 rounded-full bg-gradient-to-r ${tool.accent}`} />
                 <h3 className="text-lg font-bold">{feature}</h3>
                 <p className="mt-3 text-sm leading-6 text-slate-400">
-                  This page now uses a tool-specific workflow instead of a single generic result template.
+                  {tool.shortDescription} Use the focused controls above to
+                  generate, convert, check, or clean your input quickly.
                 </p>
               </div>
             ))}

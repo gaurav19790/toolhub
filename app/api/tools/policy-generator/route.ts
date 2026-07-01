@@ -30,7 +30,7 @@ We implement appropriate security measures to protect your personal information 
 
 If you have any questions about this Privacy Policy, please contact us at ${data.email}.
 
-This policy is compliant with ${data.country} data protection laws.
+Review this draft against your actual data practices and ${data.country} privacy requirements before publishing. Consider asking a qualified professional to review the final policy.
 `;
 
   return NextResponse.json({ policy });

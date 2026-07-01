@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
+import { blogPosts } from "@/lib/blogPosts";
 import { getCategories, tools } from "@/lib/tools";
 
 export const metadata = {
@@ -35,6 +36,20 @@ export default function BlogPage() {
         </section>
 
         <section className="mx-auto max-w-7xl px-6 pb-10">
+          <div className="mb-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {blogPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="rounded-3xl border border-white/10 bg-white/[0.055] p-5 shadow-xl shadow-black/20 transition hover:-translate-y-1 hover:border-cyan-300/60"
+              >
+                <h2 className="text-xl font-black">{post.title}</h2>
+                <p className="mt-3 text-sm leading-6 text-slate-400">
+                  {post.description}
+                </p>
+              </Link>
+            ))}
+          </div>
           <div className="flex flex-wrap gap-3">
             {categories.map((category) => (
               <a
@@ -82,12 +97,9 @@ export default function BlogPage() {
                           <h4 className="font-bold text-slate-100">
                             How to use
                           </h4>
-                          <ol className="mt-3 space-y-2 text-sm leading-6 text-slate-300">
-                            {tool.steps.map((step, index) => (
+                          <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm leading-6 text-slate-300">
+                            {tool.steps.map((step) => (
                               <li key={step}>
-                                <span className="font-bold text-pink-300">
-                                  {index + 1}.
-                                </span>{" "}
                                 {step}
                               </li>
                             ))}
@@ -101,9 +113,9 @@ export default function BlogPage() {
                             Start with this input:{" "}
                             <span className="text-cyan-300">{tool.example}</span>
                           </p>
-                          <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-400">
+                          <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-400">
                             {tool.features.map((feature) => (
-                              <li key={feature}>- {feature}</li>
+                              <li key={feature}>{feature}</li>
                             ))}
                           </ul>
                         </div>

@@ -28,8 +28,14 @@ export default function PrivacyPolicyGenerator() {
       <Navbar />
       <div className="max-w-4xl mx-auto p-6">
         <h1 className="text-4xl font-bold mb-8 text-gray-900 dark:text-white">
-          Privacy Policy Generator
+          Starter Privacy Policy Generator
         </h1>
+        <p className="mb-6 text-gray-600 dark:text-gray-400">
+          Create a starter privacy policy template for your website in seconds.
+          Enter your website name, URL, email, and country to generate a
+          customizable policy draft. Review and adjust it to match your actual
+          data practices before publishing.
+        </p>
         <form
           onSubmit={handleSubmit}
           className="space-y-4 bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-800 shadow-md mb-8"
@@ -115,14 +121,14 @@ export default function PrivacyPolicyGenerator() {
         <div className="mt-12 space-y-8">
           <div className="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-lg border border-gray-200 dark:border-gray-800 shadow-md">
             <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-              What is the ToolHub Privacy Policy Generator?
+              What is the ToolHub Starter Privacy Policy Generator?
             </h2>
 
             <div className="space-y-6 text-gray-600 dark:text-gray-400 leading-relaxed">
               <p>
                 The{" "}
                 <span className="font-semibold text-blue-600 dark:text-blue-400">
-                  ToolHub Privacy Policy Generator
+                  ToolHub Starter Privacy Policy Generator
                 </span>{" "}
                 is a comprehensive, user-friendly tool that transforms the
                 complex process of creating a privacy policy into a simple,
@@ -131,30 +137,28 @@ export default function PrivacyPolicyGenerator() {
                 must have. However, creating one from scratch can be daunting,
                 time-consuming, and potentially costly if you need to hire a
                 lawyer. Our generator eliminates these barriers by automatically
-                creating professional, legally-compliant privacy policies based
+                creating professional starter policy drafts based
                 on your specific business information. Whether you run a small
                 blog, an e-commerce store, or a software-as-a-service platform,
-                this tool provides the privacy protection your users deserve and
-                that legal regulations require.
+                this tool gives you a practical template to review, customize,
+                and publish after checking it against your real data practices.
               </p>
 
               <div>
                 <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-3">
-                  How the Privacy Policy Generator Works
+                  How the Starter Privacy Policy Generator Works
                 </h3>
                 <p>
                   Creating a privacy policy with our tool is remarkably simple.
                   You provide basic information about your website including its
                   name, URL, contact email, and the country where your primary
                   operations occur. Our intelligent system uses this information
-                  to generate a comprehensive, customized privacy policy that
-                  addresses data collection practices common to your type of
-                  business. The generator automatically includes sections
+                  to generate a customizable privacy policy draft that
+                  addresses common data collection practices. The generator includes sections
                   covering cookie usage, analytics tracking, user rights, data
-                  retention, and compliance with major regulations like GDPR and
-                  CCPA. Rather than presenting you with a generic template, our
-                  system tailors the policy to your specific context, ensuring
-                  relevance and accuracy for your business model.
+                  retention, and major privacy topics like GDPR and CCPA
+                  considerations. Use the result as a structured starting point,
+                  not as legal advice.
                 </p>
               </div>
 
@@ -235,7 +239,7 @@ export default function PrivacyPolicyGenerator() {
                         Professional Language:
                       </span>{" "}
                       The policy uses clear, professional language that is both
-                      legally sound and easy for users to understand. Avoid the
+                      clear, professional, and easy for users to understand. Avoid the
                       confusing jargon that often characterizes privacy
                       documents.
                     </span>
@@ -246,12 +250,12 @@ export default function PrivacyPolicyGenerator() {
                     </span>
                     <span>
                       <span className="font-semibold text-gray-900 dark:text-white">
-                        Ready to Use:
+                        Ready to Review:
                       </span>{" "}
-                      Your generated policy is complete and ready to publish
-                      immediately. No additional editing or legal review
-                      required, though we recommend reviewing it to ensure it
-                      matches your specific practices.
+                      Your generated policy is designed as a ready-to-edit
+                      draft. Review the text, adjust sections to match your
+                      actual data practices, and consider professional legal
+                      review before publishing.
                     </span>
                   </li>
                   <li className="flex gap-3">
@@ -283,11 +287,10 @@ export default function PrivacyPolicyGenerator() {
                   businesses collecting data from California residents. Both
                   regulations require clear disclosure of data practices. Our
                   generator ensures your privacy policy covers the essential
-                  elements required by these regulations, including data subject
-                  rights, consent mechanisms, data retention periods, and
-                  contact information for privacy-related inquiries. This
-                  comprehensive coverage protects both your users and your
-                  business.
+                  common topics connected to these regulations, including data
+                  subject rights, consent mechanisms, data retention periods,
+                  and contact information for privacy-related inquiries. Review
+                  the final policy against your actual practices and obligations.
                 </p>
               </div>
 
@@ -296,7 +299,7 @@ export default function PrivacyPolicyGenerator() {
                   Perfect for Various Business Types
                 </h3>
                 <p>
-                  The Privacy Policy Generator serves diverse business models
+                  The Starter Privacy Policy Generator serves diverse business models
                   effectively.{" "}
                   <span className="font-semibold">E-commerce businesses</span>{" "}
                   use it to protect customer transaction and shipping data.{" "}
@@ -370,15 +373,14 @@ export default function PrivacyPolicyGenerator() {
                   Getting Started
                 </h3>
                 <p>
-                  Using the Privacy Policy Generator takes just minutes. Enter
+                  Using the Starter Privacy Policy Generator takes just minutes. Enter
                   your website name—the name your business or website operates
                   under. Provide your website URL to ensure the policy is
                   specific to your site. Supply a contact email address where
                   users can reach you with privacy inquiries. Specify your
-                  country to ensure compliance with local regulations. Click the
-                  generate button and download or copy your complete,
-                  professional privacy policy. The policy is immediately ready
-                  to implement on your website.
+                  country to shape the draft for your location. Click the
+                  generate button, review the result, then copy the policy after
+                  editing it for your website.
                 </p>
               </div>
 
@@ -457,3 +459,4 @@ export default function PrivacyPolicyGenerator() {
     </div>
   );
 }
+

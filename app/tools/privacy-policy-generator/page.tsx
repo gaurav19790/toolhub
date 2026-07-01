@@ -1,9 +1,9 @@
 import PrivacyPolicyGenerator from "./PrivacyPolicyGenerator";
 
 export const metadata = {
-  title: "Privacy Policy Generator — ToolHub",
+  title: "Starter Privacy Policy Generator - ToolHub",
   description:
-    "Generate a professional privacy policy tailored to your website. Provide basic site details and receive a clear, compliant privacy policy covering data collection, usage, and user rights.",
+    "Create a starter privacy policy template for your website. Enter basic site details, generate a customizable draft, and review it for your actual data practices.",
 };
 
 export default function Page() {

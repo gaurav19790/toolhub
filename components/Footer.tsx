@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <footer className="border-t border-slate-800 px-6 py-12">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-8 grid gap-8 md:grid-cols-3">
+        <div className="mb-8 grid gap-8 md:grid-cols-4">
           <div>
             <div className="mb-3 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-2xl font-bold text-transparent">
               ToolHub
@@ -67,6 +67,46 @@ export const Footer = () => {
                   className="transition hover:text-white"
                 >
                   Password Generator
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="mb-3 font-bold">Trust</h4>
+            <ul className="space-y-2 text-sm text-slate-400">
+              <li>
+                <Link href="/about" className="transition hover:text-white">
+                  About ToolHub
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="transition hover:text-white">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="transition hover:text-white">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="transition hover:text-white">
+                  Terms of Use
+                </Link>
+              </li>
+              <li>
+                <Link href="/disclaimer" className="transition hover:text-white">
+                  Disclaimer
+                </Link>
+              </li>
+              <li>
+                <Link href="/report-bug" className="transition hover:text-white">
+                  Report a bug
+                </Link>
+              </li>
+              <li>
+                <Link href="/request-tool" className="transition hover:text-white">
+                  Request a tool
                 </Link>
               </li>
             </ul>
